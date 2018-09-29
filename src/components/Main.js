@@ -10,8 +10,7 @@ let imageDatas = require('../data/imagesDatas.json');
 // console.log(imageDatas);
 // 获取图片相关的数据
 (function genImageUrl(imagesData){
-
-  //利用自执行函数，将图片名信息 转成url 
+  //利用自执行函数，将图片名信息 转成url
   for(let i =0;i<imagesData.length;i++){
     var singleImageUrl = imagesData[i];
 
@@ -25,16 +24,29 @@ let imageDatas = require('../data/imagesDatas.json');
 })(imageDatas)
 
 
-
 class AppComponent extends React.Component {
   render() {
+    const controllerUnits = [];
+    const imgFigures = imageDatas.map((value,index) => {
+      return (
+        <figure key={index}>
+          <img src={value.imageUrl}/>
+          <figcation>
+            <h2>{value.title}</h2>
+          </figcation>
+        </figure>
+      )
+    })
+
     return (
       <section className="stage">
         <section className="img-sec">
-          <nav className="controller-nav">
-
-          </nav>
-        </section>  
+          {imgFigures}
+        </section>
+        <nav className="controller-nav">
+          {controllerUnits}
+        </nav>
+        
       </section>
     );
   }
